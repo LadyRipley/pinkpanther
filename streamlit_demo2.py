@@ -9,7 +9,8 @@ from langchain.globals import set_debug  # debug what is langchaing doing
 
 set_debug("true")  # enable langchain debug
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+#OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 llm = ChatOpenAI(model="gpt-4o",api_key=OPENAI_API_KEY)
 
 #  Give page a title
@@ -24,3 +25,4 @@ response = llm.invoke(question)
 #  show rsponse in browser (localhost:8502)
 if question:
      st.write(response.content)
+
